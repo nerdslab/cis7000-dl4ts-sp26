@@ -1,0 +1,123 @@
+:root {
+    --bg: #0e1116;
+    --text: #eaeaea;
+    --muted: #b5b5b5;
+    --border: #2a2f36;
+    --link: #7ec4ff;
+    --maxw: 880px;
+}
+
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 48px 20px 64px;
+}
+
+header {
+    margin-bottom: 48px;
+}
+
+.meta {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 70ch;
+}
+
+.repo-ref {
+    margin: 12px 0 48px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.repo-ref a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.repo-ref a span {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    color: var(--text);
+}
+
+.repo-ref a:hover span {
+    text-decoration: underline;
+}
+
+.github-link a {
+    color: var(--muted);
+}
+
+.github-link a:hover {
+    color: var(--text);
+}
+
+.github-link a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--muted);
+    transition: color 0.2s ease;
+}
+
+.github-link a:hover {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.github-link svg {
+    width: 24px;
+    height: 24px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 0 0 10px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+}
+
+p {
+    margin: 0 0 12px;
+    font-size: 15px;
+}
+
+ul {
+    margin: 8px 0 0 18px;
+    padding: 0;
+}
+
+li { margin-bottom: 6px; }
+
+footer {
+    margin-top: 64px;
+    font-size: 13px;
+    color: var(--muted);
+}
