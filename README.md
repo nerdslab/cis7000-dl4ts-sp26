@@ -1,7 +1,7 @@
 # CIS 7000: Deep Learning for Time Series (DL4TS)
 **Spring 2026 · University of Pennsylvania**
 
-\[[Webpage](https://nerdslab.github.io/cis7000-dl4ts-sp26/)\]
+\[[`Webpage`](https://nerdslab.github.io/cis7000-dl4ts-sp26/)\] \[[`Syllabus`](https://docs.google.com/document/d/19cSwEb2Fl38va0GJMrJEl8ueVMHdukcdMrne2IHDHek/edit?usp=sharing)\] \[[`Google Drive`](https://drive.google.com/drive/folders/1YRaOqn0iyWGr7lduwRR72L1qWLrFroCV?usp=sharing)\]
 
 ## Overview
 
