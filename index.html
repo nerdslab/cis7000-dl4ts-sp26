@@ -8,32 +8,161 @@
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-    <div class="wrap">
-      <header>
-        <div class="meta">University of Pennsylvania · CIS 7000-005 · Spring 2026 · <a href="https://github.com/nerdslab/cis7000-dl4ts-sp26" target="_blank" rel="noopener noreferrer">GitHub</a></div>
-        <h1>Deep Learning for Time Series (DL4TS)</h1>
-        <p class="subtitle">
-          Graduate seminar on domain adaptation and generalization in time series data.
-        </p>
-      </header>
-      <section>
-        <h2>Overview</h2>
-        <p>
-          Machine learning models often assume that the data used for training and the data seen during deployment come from the same distribution.
-          However, in the real world, this assumption rarely holds. The process of adapting models to perform well despite such shifts is known as <strong>domain adaptation</strong>.
-          In the context of time series, these shifts can arise due to changes in environments, tasks, or sensor configurations, leading to challenges in <strong>generalization and robustness</strong>.
-          This course explores methods for domain adaptation in <strong>time series</strong>, with a focus on how machine learning models can generalize across individuals, environments, tasks, and measurement conditions. We will investigate a range of approaches, ranging from classical methods to modern strategies such as parameter-efficient tuning, few-shot learning, and test-time adaptation.
-          Special attention will be given to the unique challenges posed by time series data, such as <strong>distributional drift</strong> and <strong>heterogeneity</strong> across individuals, devices, or recording setups.
-          Students will discuss recent literature and develop a hands-on <strong>research project</strong> applying these methods to real-world time series problems. 
-        </p>
-      </section>
-  
-      <section>
-        <h2>Instructional Team</h2>
-        <p><strong>Instructor:</strong> Eva Dyer</p>
-        <p><strong>Teaching Assistants:</strong> Divyansha Lachi, Shivashriganesh Mahato</p>
-      </section>
-    </div>
-  </body>
-  </html>
+  <div class="wrap">
+    <header>
+      <div class="meta">University of Pennsylvania · CIS 7000-005 · Spring 2026 · <a href="https://github.com/nerdslab/cis7000-dl4ts-sp26" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+      <h1>Deep Learning for Time Series (DL4TS)</h1>
+      <p class="subtitle">
+        Graduate seminar on domain adaptation and generalization in time series data.
+      </p>
+    </header>
+
+    <section>
+      <h2>Overview</h2>
+      <p>
+        Machine learning models often assume that the data used for training and the data seen during deployment come from the same distribution.
+        However, in the real world, this assumption rarely holds. The process of adapting models to perform well despite such shifts is known as <strong>domain adaptation</strong>.
+        In the context of time series, these shifts can arise due to changes in environments, tasks, or sensor configurations, leading to challenges in <strong>generalization and robustness</strong>.
+        This course explores methods for domain adaptation in <strong>time series</strong>, with a focus on how machine learning models can generalize across individuals, environments, tasks, and measurement conditions. We will investigate a range of approaches, ranging from classical methods to modern strategies such as parameter-efficient tuning, few-shot learning, and test-time adaptation.
+        Special attention will be given to the unique challenges posed by time series data, such as <strong>distributional drift</strong> and <strong>heterogeneity</strong> across individuals, devices, or recording setups.
+        Students will discuss recent literature and develop a hands-on <strong>research project</strong> applying these methods to real-world time series problems. 
+      </p>
+    </section>
+
+    <section>
+      <h2>Instructional Team</h2>
+      <p><strong>Instructor:</strong> Eva Dyer</p>
+      <p><strong>Teaching Assistants:</strong> Divyansha Lachi, Shivashriganesh Mahato</p>
+    </section>
+
+    <section class="links">
+      <h2>Course Links</h2>
+    
+      <div class="link-grid">
+        <a class="link-card" href="https://docs.google.com/document/d/19cSwEb2Fl38va0GJMrJEl8ueVMHdukcdMrne2IHDHek/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <div class="link-title">Syllabus</div>
+          <div class="link-sub">Google Doc</div>
+        </a>
+    
+        <a class="link-card" href="https://docs.google.com/document/d/1Cb5ySd_NOMqNgrJYsFhktM3CBkQZVzTd4kraRvttJ_U/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <div class="link-title">Papers</div>
+          <div class="link-sub">Reading list</div>
+        </a>
+    
+        <a class="link-card" href="https://drive.google.com/drive/folders/1YRaOqn0iyWGr7lduwRR72L1qWLrFroCV?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <div class="link-title">Google Drive</div>
+          <div class="link-sub">Slides, notebooks, logistics</div>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Schedule</h2>
+      <p class="muted">
+        This schedule will be updated throughout the semester.
+      </p>
+
+      <!-- search bar for schedule -->
+      <div class="table-tools">
+        <label class="sr-only" for="schedule-search">Search schedule</label>
+        <input
+          id="schedule-search"
+          class="search"
+          type="search"
+          placeholder="Search schedule (date, type, topic, links)…"
+          autocomplete="off"
+        />
+        <div id="schedule-count" class="muted small"></div>
+      </div>
+    
+      <!-- schedule table -->
+      <div class="table-wrap">
+        <table class="schedule">
+          <thead>
+            <tr>
+              <th class="col-date">Date</th>
+              <th class="col-type">Type</th>
+              <th>Topic</th>
+              <th class="col-links">Links</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Thursday, Jan 15</td>
+              <td>Lecture</td>
+              <td>Course overview</td>
+              <td class="links-cell">
+                <a href="https://docs.google.com/presentation/d/1kY1NETEEhKh0ZiaGApcoNKVO209eWasOsYSks3jDoDM/edit?usp=sharing" target="_blank" rel="noopener noreferrer">slides</a>
+              </td>
+            </tr>
+    
+            <tr>
+              <td>Tuesday, Jan 20</td>
+              <td>Interactive</td>
+              <td>Time Series: Introduction, Generalization, and Domain Shift</td>
+              <td class="links-cell">
+                <a href="https://docs.google.com/presentation/d/1kY1NETEEhKh0ZiaGApcoNKVO209eWasOsYSks3jDoDM/edit?usp=sharing" target="_blank" rel="noopener noreferrer">notebook</a>
+              </td>
+            </tr>
+    
+            <tr>
+              <td>Thursday, Jan 22</td>
+              <td>Projects</td>
+              <td>Project planning session</td>
+              <td class="links-cell">
+                <!-- <a href="https://docs.google.com/spreadsheets/d/1mykXt9AAXC5shpTd9gg0SKWvBAVj6OQFwWfgp2WJpHA/edit?usp=sharing" target="_blank" rel="noopener noreferrer">sign-up</a>
+                <span class="sep">·</span>
+                <a href="https://docs.google.com/document/d/1ZWbYplmYQW6S4az2hkW4pD2KmkGBRnIf12Q_dgYNU8o/edit?usp=sharing" target="_blank" rel="noopener noreferrer">ideas</a> -->
+                <span class="muted">TBD</span>
+              </td>
+            </tr>
+    
+            <tr>
+              <td>Tuesday, Jan 27</td>
+              <td>Lecture</td>
+              <td>Time series backbones and inductive biases</td>
+              <td class="links-cell">
+                <span class="muted">TBD</span>
+              </td>
+            </tr>
+    
+            <tr>
+              <td>Thursday, Jan 29</td>
+              <td>Projects</td>
+              <td>Work on project proposals</td>
+              <td class="links-cell">
+                <span class="muted">TBD</span>
+              </td>
+            </tr>
+    
+            <tr>
+              <td>Tuesday, Feb 3</td>
+              <td>Interactive</td>
+              <td>How backbones impact model performance and robustness</td>
+              <td class="links-cell">
+                <span class="muted">TBD</span>
+              </td>
+            </tr>
+    
+            <tr>
+              <td>Thursday, Feb 5</td>
+              <td>Projects</td>
+              <td>Work on project proposals</td>
+              <td class="links-cell">
+                <span class="muted">TBD</span>
+              </td>
+            </tr>
+
+            <tr id="schedule-empty" style="display:none;">
+              <td colspan="4" class="muted">No matching rows.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>      
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
   
