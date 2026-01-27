@@ -165,6 +165,7 @@ footer {
 
 /* Schedule */
 .muted { color: var(--muted); }
+.unmuted { color: var(--text); }
 
 .table-wrap {
     margin-top: 12px;
