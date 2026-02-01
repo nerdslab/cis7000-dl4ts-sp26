@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>DL4TS Leaderboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      body { font-family: system-ui, -apple-system, sans-serif; margin: 2rem; }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border-bottom: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+      .muted { color: #666; }
+    </style>
+  </head>
+  <body>
+    <h1>Leaderboard</h1>
+    <p class="muted">
+      Submit at <a href="./submit/">/leaderboard/submit/</a>
+    </p>
+
+    <div id="status" class="muted">Loading…</div>
+    <table id="tbl" style="display:none;">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Score</th>
+          <th>Submitted</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
