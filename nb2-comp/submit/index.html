@@ -1,39 +1,157 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>DL4TS Submit</title>
+    <title>NB2 Competition Submission</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <style>
-      body { font-family: system-ui, -apple-system, sans-serif; margin: 2rem; max-width: 720px; }
-      label { display:block; margin-top: 1rem; }
-      input, button { font-size: 1rem; padding: 0.5rem; }
-      button { margin-top: 1rem; }
-      .muted { color: #666; }
-      .ok { color: #0a7; }
-      .bad { color: #c00; }
-      code { background: #f5f5f5; padding: 0.1rem 0.3rem; border-radius: 4px; }
+      :root {
+        --bg: #0e1116;
+        --text: #eaeaea;
+        --muted: #b5b5b5;
+        --border: #2a2f36;
+        --link: #7ec4ff;
+        --maxw: 720px;
+      }
+
+      * { box-sizing: border-box; }
+      
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.55;
+      }
+
+      a { color: var(--link); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 48px 20px 64px;
+      }
+
+      h1 {
+        font-size: 36px;
+        line-height: 1.2;
+        margin: 0 0 12px;
+        letter-spacing: -0.02em;
+      }
+
+      .muted { color: var(--muted); }
+      .ok { color: #4ade80; }
+      .bad { color: #f87171; }
+
+      label {
+        display: block;
+        margin-top: 20px;
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      input[type="text"],
+      input[type="file"] {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.02);
+        color: var(--text);
+        font-size: 14px;
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.15s ease;
+      }
+
+      input[type="text"]:focus,
+      input[type="file"]:focus {
+        border-color: rgba(126, 196, 255, 0.45);
+      }
+
+      input[type="file"] {
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+
+      input[type="file"]::file-selector-button {
+        padding: 6px 12px;
+        margin-right: 12px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.05);
+        color: var(--text);
+        font-size: 13px;
+        cursor: pointer;
+        transition: background 0.15s ease;
+      }
+
+      input[type="file"]::file-selector-button:hover {
+        background: rgba(255,255,255,0.1);
+      }
+
+      button {
+        margin-top: 24px;
+        padding: 10px 20px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: rgba(126, 196, 255, 0.1);
+        color: var(--link);
+        font-size: 14px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background 0.15s ease, border-color 0.15s ease;
+      }
+
+      button:hover {
+        background: rgba(126, 196, 255, 0.15);
+        border-color: rgba(126, 196, 255, 0.45);
+      }
+
+      button:active {
+        transform: translateY(1px);
+      }
+
+      #msg {
+        margin-top: 20px;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      #msg strong {
+        color: var(--text);
+      }
+
+      @media (max-width: 640px) {
+        .wrap { padding: 32px 16px 48px; }
+        h1 { font-size: 28px; }
+      }
     </style>
   </head>
   <body>
-    <h1>Submit labels</h1>
-    <p class="muted"><a href="../">← Back to leaderboard</a></p>
+    <div class="wrap">
+      <h1>Submit labels</h1>
+      <p class="muted"><a href="../">← Back to leaderboard</a></p>
 
-    <form id="form">
-      <label>
-        Name
-        <input id="name" name="name" required placeholder="First Last" />
-      </label>
+      <form id="form">
+        <label>
+          Name
+          <input id="name" name="name" type="text" required placeholder="First Last" />
+        </label>
 
-      <label>
-        Labels file
-        <input id="file" name="file" type="file" required />
-      </label>
+        <label>
+          Labels file
+          <input id="file" name="file" type="file" required />
+        </label>
 
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">Submit</button>
+      </form>
 
-    <p id="msg" class="muted"></p>
+      <p id="msg" class="muted"></p>
+    </div>
 
     <script src="./app.js"></script>
   </body>
