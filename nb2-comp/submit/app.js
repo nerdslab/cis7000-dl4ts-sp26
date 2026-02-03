@@ -46,10 +46,10 @@ form.addEventListener("submit", async (e) => {
         msg.innerHTML = `
       <strong>Submission successful!</strong><br>
       <div style="margin-top: 0.5rem;">
-        Dataset 1: ${formatScore(data.score_dataset1)}<br>
-        Dataset 2: ${formatScore(data.score_dataset2)}<br>
-        Dataset 3: ${formatScore(data.score_dataset3)}<br>
-        Dataset 4: ${formatScore(data.score_dataset4)}<br>
+        Amplitude Shift: ${formatScore(data.score_dataset1)}<br>
+        Frequency Shift: ${formatScore(data.score_dataset2)}<br>
+        Noise Shift: ${formatScore(data.score_dataset3)}<br>
+        Trend Shift: ${formatScore(data.score_dataset4)}<br>
         <strong>Average Rank: ${formatRank(data.avg_rank || 0)}</strong>
       </div>
       <div style="margin-top: 0.5rem; font-size: 0.9em; color: #b5b5b5;">

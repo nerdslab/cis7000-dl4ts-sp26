@@ -44,6 +44,27 @@
       .ok { color: #4ade80; }
       .bad { color: #f87171; }
 
+      .banner {
+        margin-bottom: 32px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border);
+        font-size: 14px;
+      }
+
+      .banner a {
+        color: var(--link);
+      }
+
+      .banner .course-link {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .banner .instructors {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
       #status {
         margin-bottom: 16px;
         font-size: 14px;
@@ -57,9 +78,17 @@
         background: rgba(255,255,255,0.02);
       }
 
+      @media (max-width: 760px) {
+        .table-wrap {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+
       table {
         width: 100%;
         border-collapse: collapse;
+        min-width: 600px;
       }
 
       thead th {
@@ -105,6 +134,19 @@
   </head>
   <body>
     <div class="wrap">
+      <div class="banner">
+        <div class="course-link">
+          <a href="https://nerdslab.github.io/cis7000-dl4ts-sp26/">Deep Learning for Time Series (DL4TS)</a>
+        </div>
+        <div class="instructors">
+          <strong>Instructor:</strong> Eva Dyer · 
+          <strong>TAs:</strong> Divyansha Lachi, Shivashriganesh Mahato
+        </div>
+      </div>
+      
+      <p class="muted" style="font-size: 13px; margin-bottom: 8px;">
+        Notebook 2: Inductive biases in different architectures for time series
+      </p>
       <h1>Leaderboard</h1>
       <p class="muted">
         Submit your labels <a href="./submit/">here</a>
