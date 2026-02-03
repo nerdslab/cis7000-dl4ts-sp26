@@ -121,9 +121,13 @@ function renderTable() {
 
     tbody.innerHTML = entries
         .map((e, idx) => {
+            const rank = ranks[idx];
+            const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '';
+            const rankDisplay = medal ? `${medal} ${rank}` : rank;
+            
             return `
         <tr>
-          <td>${ranks[idx]}</td>
+          <td>${rankDisplay}</td>
           <td>${escapeHtml(e.name)}</td>
           <td>${formatScore(e.score_dataset1)}</td>
           <td>${formatScore(e.score_dataset2)}</td>

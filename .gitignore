@@ -1,0 +1,4 @@
+**/*.db
+*.pyc
+
+nb2-comp/*.txt

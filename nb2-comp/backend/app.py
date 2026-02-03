@@ -17,10 +17,10 @@ NUM_DATASETS = 4
 
 # Dataset sizes (N_1, N_2, N_3, N_4) - can be overridden via environment variables
 DATASET_SIZES = [
-    int(os.environ.get("DATASET1_SIZE", "100")),
-    int(os.environ.get("DATASET2_SIZE", "100")),
-    int(os.environ.get("DATASET3_SIZE", "100")),
-    int(os.environ.get("DATASET4_SIZE", "100")),
+    int(os.environ.get("DATASET1_SIZE", "400")),
+    int(os.environ.get("DATASET2_SIZE", "400")),
+    int(os.environ.get("DATASET3_SIZE", "400")),
+    int(os.environ.get("DATASET4_SIZE", "400")),
 ]
 
 # IMPORTANT: set this to your GitHub Pages origin
