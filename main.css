@@ -5,6 +5,7 @@
     --border: #2a2f36;
     --link: #7ec4ff;
     --maxw: 880px;
+    --paper-num-color: #4fdc8a;
 }
 
 * { box-sizing: border-box; }
@@ -207,6 +208,25 @@ table.schedule tbody tr:last-child td {
 
 .links-cell a { color: var(--link); }
 .links-cell .sep { color: var(--muted); margin: 0 6px; }
+
+/* Paper discussion rows */
+.topic-paper .paper-num {
+    color: var(--paper-num-color);
+    font-size: 13px;
+    margin-right: 3px;
+}
+.topic-paper .paper-title {
+    font-weight: 500;
+    color: var(--text);
+}
+.topic-paper .paper-citation {
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+}
+.topic-paper .paper-title::after {
+    content: " ";
+}
 
 @media (max-width: 760px) {
     .col-links { width: auto; }
