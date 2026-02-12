@@ -228,6 +228,24 @@ table.schedule tbody tr:last-child td {
     content: " ";
 }
 
+.topic-paper-muted .paper-num {
+    color: var(--muted);
+    font-size: 13px;
+    margin-right: 3px;
+}
+.topic-paper-muted .paper-title {
+    font-weight: 500;
+    color: var(--muted);
+}
+.topic-paper-muted .paper-citation {
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+}
+.topic-paper-muted .paper-title::after {
+    content: " ";
+}
+
 @media (max-width: 760px) {
     .col-links { width: auto; }
     table.schedule thead { display: none; }
