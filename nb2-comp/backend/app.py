@@ -85,15 +85,17 @@ def init_db() -> None:
         table_exists = cursor.fetchone() is not None
         
         if table_exists:
-            # Check if old schema (has 'score' column instead of 'score_dataset1')
             cursor = conn.execute("PRAGMA table_info(submissions)")
             columns = [row[1] for row in cursor.fetchall()]
             
             if 'score' in columns and 'score_dataset1' not in columns:
-                # Old schema detected - drop and recreate
                 print("Old schema detected. Migrating database...")
                 conn.execute("DROP TABLE submissions")
                 table_exists = False
+            elif 'description' not in columns:
+                print("Adding description column...")
+                conn.execute("ALTER TABLE submissions ADD COLUMN description TEXT NOT NULL DEFAULT ''")
+                conn.commit()
         
         if not table_exists:
             conn.execute(
@@ -101,6 +103,7 @@ def init_db() -> None:
                 CREATE TABLE submissions (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL,
+                    description TEXT NOT NULL DEFAULT '',
                     score_dataset1 REAL NOT NULL,
                     score_dataset2 REAL NOT NULL,
                     score_dataset3 REAL NOT NULL,
@@ -111,12 +114,10 @@ def init_db() -> None:
                 )
                 """
             )
-            # Create index for faster rank computation
             conn.execute(
                 "CREATE INDEX idx_avg_rank ON submissions(avg_rank)"
             )
         else:
-            # Table exists with new schema - just ensure index exists
             conn.execute(
                 "CREATE INDEX IF NOT EXISTS idx_avg_rank ON submissions(avg_rank)"
             )
@@ -279,7 +280,7 @@ async def broadcast_leaderboard_update():
         with db() as conn:
             rows = conn.execute(
                 """
-                SELECT name, score_dataset1, score_dataset2, score_dataset3, score_dataset4, avg_rank, submitted_at
+                SELECT name, description, score_dataset1, score_dataset2, score_dataset3, score_dataset4, avg_rank, submitted_at
                 FROM submissions
                 ORDER BY avg_rank ASC, submitted_at DESC
                 LIMIT 200
@@ -289,6 +290,7 @@ async def broadcast_leaderboard_update():
         entries = [
             {
                 "name": r["name"],
+                "description": r["description"] or "",
                 "score_dataset1": float(r["score_dataset1"]),
                 "score_dataset2": float(r["score_dataset2"]),
                 "score_dataset3": float(r["score_dataset3"]),
@@ -303,8 +305,9 @@ async def broadcast_leaderboard_update():
         await manager.broadcast({"entries": entries})
 
 @app.post("/api/submit")
-async def submit(name: str = Form(...), file: UploadFile = File(...)) -> Dict[str, Any]:
+async def submit(name: str = Form(...), file: UploadFile = File(...), description: str = Form("")) -> Dict[str, Any]:
     name = name.strip()
+    description = description.strip()
     if not name:
         raise HTTPException(status_code=400, detail="Name cannot be empty.")
 
@@ -330,10 +333,10 @@ async def submit(name: str = Form(...), file: UploadFile = File(...)) -> Dict[st
         cur = conn.execute(
             """
             INSERT INTO submissions 
-            (name, score_dataset1, score_dataset2, score_dataset3, score_dataset4, avg_rank, submitted_at, file_sha256)
-            VALUES (?, ?, ?, ?, ?, 999.0, ?, ?)
+            (name, description, score_dataset1, score_dataset2, score_dataset3, score_dataset4, avg_rank, submitted_at, file_sha256)
+            VALUES (?, ?, ?, ?, ?, ?, 999.0, ?, ?)
             """,
-            (name, float(score1), float(score2), float(score3), float(score4), submitted_at, file_sha),
+            (name, description, float(score1), float(score2), float(score3), float(score4), submitted_at, file_sha),
         )
         submission_id = cur.lastrowid
     
@@ -367,7 +370,7 @@ def leaderboard() -> Dict[str, List[Dict[str, Any]]]:
     with db() as conn:
         rows = conn.execute(
             """
-            SELECT name, score_dataset1, score_dataset2, score_dataset3, score_dataset4, avg_rank, submitted_at
+            SELECT name, description, score_dataset1, score_dataset2, score_dataset3, score_dataset4, avg_rank, submitted_at
             FROM submissions
             ORDER BY avg_rank ASC, submitted_at DESC
             LIMIT 200
@@ -377,6 +380,7 @@ def leaderboard() -> Dict[str, List[Dict[str, Any]]]:
     entries = [
         {
             "name": r["name"],
+            "description": r["description"] or "",
             "score_dataset1": float(r["score_dataset1"]),
             "score_dataset2": float(r["score_dataset2"]),
             "score_dataset3": float(r["score_dataset3"]),
@@ -413,7 +417,7 @@ async def websocket_leaderboard(websocket: WebSocket):
         with db() as conn:
             rows = conn.execute(
                 """
-                SELECT name, score_dataset1, score_dataset2, score_dataset3, score_dataset4, avg_rank, submitted_at
+                SELECT name, description, score_dataset1, score_dataset2, score_dataset3, score_dataset4, avg_rank, submitted_at
                 FROM submissions
                 ORDER BY avg_rank ASC, submitted_at DESC
                 LIMIT 200
@@ -423,6 +427,7 @@ async def websocket_leaderboard(websocket: WebSocket):
         entries = [
             {
                 "name": r["name"],
+                "description": r["description"] or "",
                 "score_dataset1": float(r["score_dataset1"]),
                 "score_dataset2": float(r["score_dataset2"]),
                 "score_dataset3": float(r["score_dataset3"]),

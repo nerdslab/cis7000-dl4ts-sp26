@@ -119,14 +119,24 @@ function renderTable() {
         prevAvgRank = avgRank;
     }
 
+    // Preserve which rows are currently expanded (by name)
+    const expandedNames = new Set();
+    tbody.querySelectorAll("tr.data-row.expanded").forEach((tr) => {
+        expandedNames.add(tr.dataset.name);
+    });
+
     tbody.innerHTML = entries
         .map((e, idx) => {
             const rank = ranks[idx];
             const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '';
             const rankDisplay = medal ? `${medal} ${rank}` : rank;
+            const isExpanded = expandedNames.has(e.name);
+            const descText = e.description
+                ? escapeHtml(e.description)
+                : '<span class="empty">No description provided.</span>';
             
             return `
-        <tr>
+        <tr class="data-row${isExpanded ? ' expanded' : ''}" data-name="${escapeHtml(e.name)}">
           <td>${rankDisplay}</td>
           <td>${escapeHtml(e.name)}</td>
           <td>${formatScore(e.score_dataset1)}</td>
@@ -135,9 +145,22 @@ function renderTable() {
           <td>${formatScore(e.score_dataset4)}</td>
           <td>${formatRank(e.avg_rank)}</td>
         </tr>
+        <tr class="detail-row${isExpanded ? ' open' : ''}">
+          <td colspan="7"><div class="detail-inner">${descText}</div></td>
+        </tr>
       `;
         })
         .join("");
+
+    // Wire up click handlers on data rows
+    tbody.querySelectorAll("tr.data-row").forEach((tr) => {
+        tr.addEventListener("click", () => {
+            const detail = tr.nextElementSibling;
+            const isOpen = tr.classList.contains("expanded");
+            tr.classList.toggle("expanded", !isOpen);
+            detail.classList.toggle("open", !isOpen);
+        });
+    });
 
     // Update header sort indicators
     updateSortIndicators();

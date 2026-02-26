@@ -74,7 +74,8 @@
       }
 
       input[type="text"],
-      input[type="file"] {
+      input[type="file"],
+      textarea {
         width: 100%;
         padding: 10px 12px;
         border-radius: 12px;
@@ -88,8 +89,14 @@
       }
 
       input[type="text"]:focus,
-      input[type="file"]:focus {
+      input[type="file"]:focus,
+      textarea:focus {
         border-color: rgba(126, 196, 255, 0.45);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 80px;
       }
 
       input[type="file"] {
@@ -175,12 +182,17 @@
       <form id="form">
         <label>
           Name
-          <input id="name" name="name" type="text" required placeholder="First Last" />
+          <input id="name" name="name" type="text" required placeholder="First_Last_Backbone_Identifier" />
         </label>
 
         <label>
           Labels file
           <input id="file" name="file" type="file" required />
+        </label>
+
+        <label>
+          Description
+          <textarea id="description" name="description" rows="3" placeholder="Include details about what you tried: architecture, input processing, additional components, etc."></textarea>
         </label>
 
         <button type="submit">Submit</button>

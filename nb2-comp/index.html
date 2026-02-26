@@ -118,8 +118,50 @@
         border-bottom: none;
       }
 
-      tbody tr:hover {
-        background: rgba(255,255,255,0.02);
+      tbody tr.data-row {
+        cursor: pointer;
+      }
+
+      tbody tr.data-row:hover {
+        background: rgba(255,255,255,0.04);
+      }
+
+      tbody tr.detail-row td {
+        padding: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .detail-inner {
+        padding: 12px 14px 14px 42px;
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.6;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .detail-inner.empty {
+        font-style: italic;
+      }
+
+      tbody tr.detail-row {
+        display: none;
+      }
+
+      tbody tr.detail-row.open {
+        display: table-row;
+      }
+
+      tbody tr.data-row.expanded td:first-child::before {
+        content: '▾ ';
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      tbody tr.data-row:not(.expanded) td:first-child::before {
+        content: '▸ ';
+        font-size: 11px;
+        color: var(--border);
       }
 
       @media (max-width: 760px) {
@@ -153,6 +195,9 @@
       </p>
 
       <div id="status" class="muted">Loading…</div>
+      <p style="font-size: 13px; color: var(--muted); margin: 0 0 10px;">
+        Click any row to expand and view the submission description.
+      </p>
       <div class="table-wrap">
         <table id="tbl" style="display:none;">
           <thead>

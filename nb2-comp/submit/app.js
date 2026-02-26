@@ -19,6 +19,7 @@ form.addEventListener("submit", async (e) => {
 
     const name = document.getElementById("name").value.trim();
     const file = document.getElementById("file").files[0];
+    const description = document.getElementById("description").value.trim();
     if (!name || !file) {
         msg.className = "bad";
         msg.textContent = "Please provide both name and file";
@@ -28,6 +29,7 @@ form.addEventListener("submit", async (e) => {
     const fd = new FormData();
     fd.append("name", name);
     fd.append("file", file);
+    fd.append("description", description);
 
     try {
         const r = await fetch(`${BACKEND_BASE}/api/submit`, {
