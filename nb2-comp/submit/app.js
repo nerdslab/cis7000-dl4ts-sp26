@@ -1,5 +1,5 @@
 // Configuration - update this to your backend URL
-const BACKEND_BASE = "https://informed-treasures-coalition-connected.trycloudflare.com";
+const BACKEND_BASE = "https://led-writers-hereby-navigation.trycloudflare.com";
 
 const form = document.getElementById("form");
 const msg = document.getElementById("msg");

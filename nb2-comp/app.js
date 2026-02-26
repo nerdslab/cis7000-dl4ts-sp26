@@ -1,5 +1,5 @@
 // Configuration - update this to your backend URL
-const BACKEND_BASE = "https://informed-treasures-coalition-connected.trycloudflare.com";
+const BACKEND_BASE = "https://led-writers-hereby-navigation.trycloudflare.com";
 const WS_BASE = BACKEND_BASE.replace(/^https/, "wss").replace(/^http/, "ws");
 
 // State
